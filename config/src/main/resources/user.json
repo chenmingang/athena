@@ -1,0 +1,56 @@
+{
+  "index": "user-%yyyy-MM",
+  "type": "user",
+  "primaryKey": "userId",
+  "tables": {
+    "user": [
+      {
+        "destination": "des_name",
+        "schemaName": "db_name",
+        "tableName": "user",
+        "primaryKey": "id",
+        "fields": {
+          "type":"parent",
+          "userName": "String",
+          "gender": "String",
+          "lastSchoolName": "String",
+          "createTime": "Date",
+          "updateTime": "Date",
+          "isDel": "Integer"
+        }
+      },
+      {
+        "type":"child-single",
+        "destination": "des_name",
+        "schemaName": "db_name",
+        "tableName": "user_address",
+        "foreignKey": "userId",
+        "fields": {
+          "address": "String",
+          "createTime": "Date"
+        }
+      },
+      {
+        "type":"child-multi",
+        "destination": "des_name",
+        "schemaName": "db_name",
+        "tableName": "user_school",
+        "foreignKey": "userId",
+        "fields": {
+          "name": "String",
+          "createTime": "Date"
+        }
+      }
+    ]
+  },
+  "event": [
+    {
+      "login": {
+        "name": "登录"
+      },
+      "edit": {
+        "name": "修改信息"
+      }
+    }
+  ]
+}
