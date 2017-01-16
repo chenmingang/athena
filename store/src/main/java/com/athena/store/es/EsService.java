@@ -1,5 +1,6 @@
 package com.athena.store.es;
 
+import com.athena.config.CommonConfig;
 import com.athena.domain.EventMessage;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
@@ -23,6 +24,8 @@ import org.elasticsearch.search.SearchHits;
 import org.elasticsearch.search.sort.SortBuilder;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import java.lang.reflect.Field;
 import java.net.InetAddress;
@@ -34,7 +37,12 @@ import java.util.concurrent.ExecutionException;
 /**
  * Created by zeal on 16-4-11.
  */
+@Service
 public class EsService {
+
+    @Autowired
+    CommonConfig commonConfig;
+
     private static Logger logger = LoggerFactory.getLogger(EsService.class);
 
     private String ESADDRESS = "";//ConfigUtil.getInstance().getProperties().getProperty("es.address");

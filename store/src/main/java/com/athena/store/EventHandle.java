@@ -1,11 +1,12 @@
 package com.athena.store;
 
 import com.athena.domain.EventMessage;
+import org.springframework.stereotype.Service;
 
 /**
  * Created by zeal on 17-1-14.
  */
-@Ser
+@Service
 public class EventHandle implements DataHandle {
     @Override
     public boolean handle(Object data) {

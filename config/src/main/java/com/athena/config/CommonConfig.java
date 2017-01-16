@@ -11,6 +11,7 @@ import java.util.Set;
 public class CommonConfig {
     private Set<String> destinations;
     private String zookeeperAddress;
+    private String esAddress;
 
     public Set<String> getDestinations() {
         return destinations;
@@ -26,5 +27,13 @@ public class CommonConfig {
 
     public void setZookeeperAddress(String zookeeperAddress) {
         this.zookeeperAddress = zookeeperAddress;
+    }
+
+    public String getEsAddress() {
+        return esAddress;
+    }
+
+    public void setEsAddress(String esAddress) {
+        this.esAddress = esAddress;
     }
 }
