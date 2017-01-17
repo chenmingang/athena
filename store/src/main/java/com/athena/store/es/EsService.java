@@ -22,6 +22,7 @@ import org.elasticsearch.script.Script;
 import org.elasticsearch.search.SearchHit;
 import org.elasticsearch.search.SearchHits;
 import org.elasticsearch.search.sort.SortBuilder;
+import org.elasticsearch.transport.client.PreBuiltTransportClient;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -57,11 +58,10 @@ public class EsService {
 
     public EsService() {
         try {
-            Settings settings = Settings.settingsBuilder().put("cluster.name", "platAthenaElasticSearch")
+            Settings settings = Settings.builder()
+                    .put("cluster.name", "platAthenaElasticSearch")
                     .build();
-            TransportClient transportClient = TransportClient.builder()
-                    .settings(settings)
-                    .build();
+            TransportClient transportClient = new PreBuiltTransportClient(settings);
 
             if (ESADDRESS != null) {
                 String[] adds = ESADDRESS.split(",");
@@ -195,7 +195,7 @@ public class EsService {
         try {
             client.update(updateRequest).get();
         } catch (Exception e) {
-            logger.info("重试失败！本次操作数据丢失{}", script.getScript());
+            logger.info("重试失败！本次操作数据丢失{}", script.toString());
         }
         return true;
     }
