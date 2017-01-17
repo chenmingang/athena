@@ -46,7 +46,8 @@ public class EsService {
 
     private static Logger logger = LoggerFactory.getLogger(EsService.class);
 
-    private String ESADDRESS = "";//ConfigUtil.getInstance().getProperties().getProperty("es.address");
+    private String esAddress = commonConfig.getEsAddress();
+    private String clusterName = commonConfig.getClusterName();
 
     private static Gson gson = new GsonBuilder().setDateFormat("yyyy-MM-dd'T'HH:mm:ssZ").create();
 
@@ -59,12 +60,12 @@ public class EsService {
     public EsService() {
         try {
             Settings settings = Settings.builder()
-                    .put("cluster.name", "platAthenaElasticSearch")
+                    .put("cluster.name", clusterName)
                     .build();
             TransportClient transportClient = new PreBuiltTransportClient(settings);
 
-            if (ESADDRESS != null) {
-                String[] adds = ESADDRESS.split(",");
+            if (esAddress != null) {
+                String[] adds = esAddress.split(",");
                 for (String add : adds) {
                     String[] hostport = add.split(":");
                     transportClient.addTransportAddress(new InetSocketTransportAddress(InetAddress.getByName(hostport

@@ -12,6 +12,7 @@ public class CommonConfig {
     private Set<String> destinations;
     private String zookeeperAddress;
     private String esAddress;
+    private String clusterName;
 
     public Set<String> getDestinations() {
         return destinations;
@@ -35,5 +36,13 @@ public class CommonConfig {
 
     public void setEsAddress(String esAddress) {
         this.esAddress = esAddress;
+    }
+
+    public String getClusterName() {
+        return clusterName;
+    }
+
+    public void setClusterName(String clusterName) {
+        this.clusterName = clusterName;
     }
 }
