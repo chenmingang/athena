@@ -1,5 +1,5 @@
 {
-  "index": "user-%yyyy-MM",
+  "index": "user",
   "type": "user",
   "primaryKey": "userId",
   "tables": {
@@ -41,13 +41,13 @@
       }
     }
   },
-  "event": {
+  "events": {
     "login": {
-      "type": "login",
+      "eventType": "login",
       "name": "登录"
     },
     "edit": {
-      "type": "edit",
+      "eventType": "edit",
       "name": "修改信息"
     }
   }

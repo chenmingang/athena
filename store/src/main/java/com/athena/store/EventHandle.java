@@ -1,6 +1,8 @@
 package com.athena.store;
 
+import com.athena.config.IndexDataMappingFactory;
 import com.athena.domain.EventMessage;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 /**
@@ -8,6 +10,10 @@ import org.springframework.stereotype.Service;
  */
 @Service
 public class EventHandle implements DataHandle {
+
+    @Autowired
+    IndexDataMappingFactory indexDataMappingFactory;
+
     @Override
     public boolean handle(Object data) {
         if (data instanceof EventMessage) {

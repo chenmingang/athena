@@ -111,17 +111,8 @@ class Table {
 }
 
 class Event {
-    private String type;
+    private String eventType;
     private String name;
-
-
-    public String getType() {
-        return type;
-    }
-
-    public void setType(String type) {
-        this.type = type;
-    }
 
     public String getName() {
         return name;
@@ -129,5 +120,13 @@ class Event {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    public String getEventType() {
+        return eventType;
+    }
+
+    public void setEventType(String eventType) {
+        this.eventType = eventType;
     }
 }
