@@ -6,10 +6,11 @@ import com.alibaba.otter.canal.protocol.CanalEntry;
 import com.athena.domain.CanalClientObj;
 import com.athena.pipe.canal.client.AbstractCanalClient;
 import com.athena.store.DataFromDbHandle;
-import com.athena.config.CommonConfig;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.stereotype.Service;
 
 import javax.annotation.PostConstruct;
 import java.util.Set;
@@ -17,21 +18,19 @@ import java.util.Set;
 /**
  * Created by zeal on 16-1-12.
  */
+@Service
 public class CanalClinetImpl {
     protected final static Logger logger = LoggerFactory.getLogger(CanalClinetImpl.class);
 
-    @Autowired
-    CommonConfig commonConfig;
-
+    @Value("${destinations}")
     private Set<String> destinations;
+    @Value("${zookeeperAddress}")
     private String zookeeperAddress;
     @Autowired
     private DataFromDbHandle dataFromDbHandle;
 
     @PostConstruct
     public void startCanal() {
-        destinations = commonConfig.getDestinations();
-        zookeeperAddress = commonConfig.getZookeeperAddress();
         if (destinations != null) {
             for (final String destination : destinations) {
                 new AbstractCanalClient() {

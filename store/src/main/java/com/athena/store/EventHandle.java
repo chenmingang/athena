@@ -18,7 +18,7 @@ public class EventHandle implements DataHandle {
     public boolean handle(Object data) {
         if (data instanceof EventMessage) {
             EventMessage eventMessage = (EventMessage) data;
-
+            
         } else {
             throw new IllegalArgumentException("未支持的数据类型存储");
         }

@@ -51,82 +51,93 @@ public class IndexDataMapping {
     public void setEvents(Map<String, Event> events) {
         this.events = events;
     }
-}
 
-class Table {
-    private String destination;
-    private String schemaName;
-    private String tableName;
-    private String primaryKey;
-    private String type;
-    private Map<String, String> fields;
 
-    public String getDestination() {
-        return destination;
+    public class Table {
+        private String destination;
+        private String schemaName;
+        private String tableName;
+        private String primaryKey;
+        private String foreignKey;
+        private String type;//parent  child-single  child-multi
+        private Map<String, String> fields;
+
+        public String getDestination() {
+            return destination;
+        }
+
+        public void setDestination(String destination) {
+            this.destination = destination;
+        }
+
+        public String getSchemaName() {
+            return schemaName;
+        }
+
+        public void setSchemaName(String schemaName) {
+            this.schemaName = schemaName;
+        }
+
+        public String getTableName() {
+            return tableName;
+        }
+
+        public void setTableName(String tableName) {
+            this.tableName = tableName;
+        }
+
+        public String getPrimaryKey() {
+            return primaryKey;
+        }
+
+        public void setPrimaryKey(String primaryKey) {
+            this.primaryKey = primaryKey;
+        }
+
+        public String getType() {
+            return type;
+        }
+
+        public void setType(String type) {
+            this.type = type;
+        }
+
+        public Map<String, String> getFields() {
+            return fields;
+        }
+
+        public void setFields(Map<String, String> fields) {
+            this.fields = fields;
+        }
+
+        public String getForeignKey() {
+            return foreignKey;
+        }
+
+        public void setForeignKey(String foreignKey) {
+            this.foreignKey = foreignKey;
+        }
     }
 
-    public void setDestination(String destination) {
-        this.destination = destination;
+    public class Event {
+        private String eventType;
+        private String name;
+
+        public String getName() {
+            return name;
+        }
+
+        public void setName(String name) {
+            this.name = name;
+        }
+
+        public String getEventType() {
+            return eventType;
+        }
+
+        public void setEventType(String eventType) {
+            this.eventType = eventType;
+        }
     }
 
-    public String getSchemaName() {
-        return schemaName;
-    }
-
-    public void setSchemaName(String schemaName) {
-        this.schemaName = schemaName;
-    }
-
-    public String getTableName() {
-        return tableName;
-    }
-
-    public void setTableName(String tableName) {
-        this.tableName = tableName;
-    }
-
-    public String getPrimaryKey() {
-        return primaryKey;
-    }
-
-    public void setPrimaryKey(String primaryKey) {
-        this.primaryKey = primaryKey;
-    }
-
-    public String getType() {
-        return type;
-    }
-
-    public void setType(String type) {
-        this.type = type;
-    }
-
-    public Map<String, String> getFields() {
-        return fields;
-    }
-
-    public void setFields(Map<String, String> fields) {
-        this.fields = fields;
-    }
-}
-
-class Event {
-    private String eventType;
-    private String name;
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public String getEventType() {
-        return eventType;
-    }
-
-    public void setEventType(String eventType) {
-        this.eventType = eventType;
-    }
 }
